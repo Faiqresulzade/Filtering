@@ -1,0 +1,51 @@
+﻿@using FiorEllo.Areas.Admin.ViewModels.Product;
+@model ProductIndexViewModel
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Categories</h4>
+                        <a class="btn btn-main" asp-action="create" asp-controller="product" asp-area="admin">Create Product</a>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th>PhotoName</th>
+                                        <th>Weight</th>
+                                        <th>Dimensions</th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var products in Model.Products)
+                                    {
+                                            <tr>
+                                            <td>@products.Id</td>
+                                            <td>@products.Title</td>
+                                            <td>@products.Price</td>
+                                            <td>@products.PhotoName</td>
+                                            <td>@products.Weight</td>
+                                            <td>@products.Dimensions</td>
+                                                <td>
+                                                <a class="btn btn-primary" asp-action="details" asp-controller="product" asp-area="admin" asp-route-id="@products.Id">Details</a>
+                                                <a class="btn btn-danger" asp-action="delete" asp-controller="product" asp-area="admin" asp-route-id="@products.Id">Delete</a>
+                                                <a class="btn btn-primary" asp-action="update" asp-controller="product" asp-area="admin" asp-route-id="@products.Id">Update</a>
+                                                </td>
+                                            </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
